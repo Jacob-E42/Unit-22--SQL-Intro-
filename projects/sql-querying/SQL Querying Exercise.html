@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>SQL Querying Exercise</title>
+
+    <link rel="stylesheet" href="./SQL Querying Exercise_files/pygments.css" type="text/css">
+    <link rel="stylesheet" href="./SQL Querying Exercise_files/handouts-sphinx.css">
+
+    
+    <link href="./SQL Querying Exercise_files/css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+<div id="page-wrapper">
+    <div id="page-sidebar">
+        <header>
+            <p class="project">Springboard</p>
+
+            <p class="title">SQL Querying Exercise</p>
+
+            <p class="backlink"><a href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html"> « Back to Homepage</a></p>
+
+        </header>
+        <div id="toc">
+            <ul>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#">SQL Querying Exercise</a><ul>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#part-1-sqlzoo">Part 1: SQLZoo</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#part-2-more-sql-including-aggregates">Part 2: More SQL (Including aggregates)</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#part-3-products-querying">Part 3: Products Querying</a><ul>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#setup">Setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#part-4-google-play-store-querying">Part 4: Google Play Store Querying</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#further-study-bonus-queries">Further Study: Bonus Queries</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#futher-study-more-on-subqueries">Futher Study: More on Subqueries</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#further-study-choose-your-own-data-set">Further Study: Choose your own data set!</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/index.html#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    </div>
+    <div id="page-content">
+        
+  <div class="section" id="sql-querying-exercise">
+<h1>SQL Querying Exercise</h1>
+<div class="section" id="part-1-sqlzoo">
+<h2>Part 1: SQLZoo</h2>
+<p>Head to <a class="reference external" href="https://sqlzoo.net/">SQL Zoo</a> and complete tutorials 0, 1, 2, and 3.</p>
+</div>
+<div class="section" id="part-2-more-sql-including-aggregates">
+<h2>Part 2: More SQL (Including aggregates)</h2>
+<p>Complete the following code SQL challenges on Codewars:</p>
+<p><a class="reference external" href="https://www.codewars.com/kata/sql-basics-simple-where-and-order-by/train/sql">SQL Basics: Simple WHERE and ORDER BY</a></p>
+<p><a class="reference external" href="https://www.codewars.com/kata/sql-basics-simple-sum">SQL Basics: Simple SUM</a></p>
+<p><a class="reference external" href="https://www.codewars.com/kata/sql-basics-simple-min-slash-max/train/sql">SQL Basics: Simple MIN / MAX</a></p>
+<p><a class="reference external" href="https://www.codewars.com/kata/1-find-all-active-students/train/sql">Find all active students</a></p>
+<p><a class="reference external" href="https://www.codewars.com/kata/sql-basics-simple-group-by/train/sql">SQL Basics: Simple GROUP BY</a></p>
+<p><a class="reference external" href="https://www.codewars.com/kata/sql-basics-simple-having/train/sql">SQL Basics: Simple HAVING</a></p>
+<p>Then, complete tutorial 5 (SUM_and_COUNT) on <a class="reference external" href="https://sqlzoo.net/">SQL Zoo.</a></p>
+</div>
+<div class="section" id="part-3-products-querying">
+<h2>Part 3: Products Querying</h2>
+<div class="section" id="setup">
+<h3>Setup</h3>
+<p><a class="reference external" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying.zip">Download exercise starter code</a></p>
+<p>To seed your database, run the following command from within the starter code directory.</p>
+<pre class="console literal-block">$ <span class="cmd">psql &lt; seed_products.sql</span>
+</pre>
+<p>This will create the database and table.</p>
+<p>If using Postico, you will want to utilize the <cite>SQL Query</cite> interface. But you should favor using <cite>psql</cite> for this exercise, so that you can get used to the terminal interface.</p>
+<p>There is a table called <cite>products</cite> with the following columns:</p>
+<blockquote>
+<div><ul class="simple">
+<li><cite>id</cite>, an auto-incrementing integer that is the unique
+identifier for a product</li>
+<li><cite>name</cite>, text that cannot be left null</li>
+<li><cite>price</cite>, which is a non-blank floating-point number;</li>
+<li><cite>can_be_returned</cite>, which is a boolean, and not nullable</li>
+</ul>
+</div></blockquote>
+<p>Write the SQL commands necessary to do the following in <cite>crud.sql</cite>. When you get a query to work correctly, copy and paste it into the <code class="docutils literal notranslate"><span class="pre">queries_products.sql</span></code> file with a comment for which query it is.</p>
+<ol class="arabic simple">
+<li>Add a product to the table with the name of “chair”, price of 44.00, and can_be_returned of false.</li>
+<li>Add a product to the table with the name of “stool”, price of 25.99, and can_be_returned of true.</li>
+<li>Add a product to the table with the name of “table”, price of 124.00, and can_be_returned of false.</li>
+<li>Display all of the rows and columns in the table.</li>
+<li>Display all of the names of the products.</li>
+<li>Display all of the names and prices of the products.</li>
+<li>Add a new product - make up whatever you would like!</li>
+<li>Display only the products that <cite>can_be_returned</cite>.</li>
+<li>Display only the products that have a price less than 44.00.</li>
+<li>Display only the products that have a price in between 22.50 and 99.99.</li>
+<li>There’s a sale going on: Everything is $20 off! Update the database accordingly.</li>
+<li>Because of the sale, everything that costs less than $25 has sold out. Remove all products whose price meets this criteria.</li>
+<li>And now the sale is over. For the remaining products, increase their price by $20.</li>
+<li>There is a new company policy: everything is returnable. Update the database accordingly.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="part-4-google-play-store-querying">
+<h2>Part 4: Google Play Store Querying</h2>
+<p>For this exercise, you are going to practice querying a relatively large dataset: close to 10k apps listed in the Google Play Store (data scraped mid 2018).</p>
+<p>If you’re curious, the original data is from <a class="reference external" href="https://www.kaggle.com/lava18/google-play-store-apps">here</a>.</p>
+<p>Practice running your SQL queries in the Postico SQL query box or in <cite>psql</cite> in the terminal if you prefer.</p>
+<p>When you get a query to work correctly, copy and paste it into the <code class="docutils literal notranslate"><span class="pre">queries_playstore.sql</span></code> file with a comment for which query it is.</p>
+<p>To seed your database, run the following command from within the starter code directory.</p>
+<pre class="console literal-block">$ <span class="cmd">psql &lt; seed_playstore.sql</span>
+</pre>
+<p>This will create the database and table. You should now have a new database, called <cite>playstore</cite>, along with a single table, <cite>analytics</cite></p>
+<p>Here are the rest of the queries you should write, phrased like your boss is asking for specific stuff:</p>
+<ol class="arabic simple">
+<li>Find the app with an ID of <cite>1880</cite>.</li>
+<li>Find the ID and app name for all apps that were last updated on August 01, 2018.</li>
+<li>Count the number of apps in each category, e.g. “Family | 1972”.</li>
+<li>Find the top 5 most-reviewed apps and the number of reviews for each.</li>
+<li>Find the app that has the most reviews with a rating greater than equal to 4.8.</li>
+<li>Find the average rating for each category ordered by the highest rated to lowest rated.</li>
+<li>Find the name, price, and rating of the most expensive app with a rating that’s less than 3.</li>
+<li>Find all apps with a min install not exceeding 50, that have a rating. Order your results by highest rated first.</li>
+<li>Find the names of all apps that are rated less than 3 with at least 10000 reviews.</li>
+<li>Find the top 10 most-reviewed apps that cost between 10 cents and a dollar.</li>
+<li>Find the most out of date app. Hint: You don’t need to do it this way, but it’s possible to do with a subquery: <a class="reference external" href="http://www.postgresqltutorial.com/postgresql-max-function/">http://www.postgresqltutorial.com/postgresql-max-function/</a></li>
+<li>Find the most expensive app (the query is very similar to #11).</li>
+<li>Count all the reviews in the Google Play Store.</li>
+<li>Find all the categories that have more than 300 apps in them.</li>
+<li>Find the app that has the highest proportion of min_installs to reviews, among apps that have been installed at least 100,000 times. Display the name of the app along with the number of reviews, the min_installs, and the proportion.</li>
+</ol>
+</div>
+<div class="section" id="further-study-bonus-queries">
+<h2>Further Study: Bonus Queries</h2>
+<p>You will have to research PostgreSQL <a class="reference external" href="https://www.postgresql.org/docs/current/functions-matching.html">pattern matching</a> in addition to  <a class="reference external" href="https://www.postgresql.org/docs/current/functions-array.html">array functions and operators</a>. You may also find it helpful to do some research on “subqueries.”</p>
+<p>FS1. Find the name and rating of the top rated apps in each category, among apps that have been installed at least 50,000 times.</p>
+<p>FS2. Find all the apps that have a name similar to “facebook”.</p>
+<p>FS3. Find all the apps that have more than 1 genre.</p>
+<p>FS4. Find all the apps that have education as one of their genres.</p>
+</div>
+<div class="section" id="futher-study-more-on-subqueries">
+<h2>Futher Study: More on Subqueries</h2>
+<p>Complete tutorial 4 on <a class="reference external" href="https://sqlzoo.net/">SQL Zoo.</a></p>
+</div>
+<div class="section" id="further-study-choose-your-own-data-set">
+<h2>Further Study: Choose your own data set!</h2>
+<p>Find a set of tabular data you’d be interested in querying, and practice adding
+and querying records using SQL. You could explore data on movies, music, sports,
+voting, or anything else you’re curious about.</p>
+</div>
+<div class="section" id="solution">
+<h2>Solution</h2>
+<p><a class="reference external" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-querying/solution/index.html">See our solution</a></p>
+</div>
+</div>
+
+
+
+    </div>
+</div>
+<script type="text/javascript" src="./SQL Querying Exercise_files/jquery.js.download"></script>
+<script type="text/javascript" src="./SQL Querying Exercise_files/underscore.js.download"></script>
+<script type="text/javascript" src="./SQL Querying Exercise_files/doctools.js.download"></script>
+<script type="text/javascript" src="./SQL Querying Exercise_files/language_data.js.download"></script> 
+
+</body></html>
