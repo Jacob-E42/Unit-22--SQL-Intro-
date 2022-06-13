@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!-- saved from url=(0093)https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Joins Exercises</title>
+
+    <link rel="stylesheet" href="./Joins Exercises_files/pygments.css" type="text/css">
+    <link rel="stylesheet" href="./Joins Exercises_files/handouts-sphinx.css">
+
+    
+    <link href="./Joins Exercises_files/css" rel="stylesheet" type="text/css">
+    
+</head>
+<body>
+<div id="page-wrapper">
+    <div id="page-sidebar">
+        <header>
+            <p class="project">Springboard</p>
+
+            <p class="title">Joins Exercises</p>
+
+            <p class="backlink"><a href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/index.html"> « Back to Homepage</a></p>
+
+        </header>
+        <div id="toc">
+            <ul>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/index.html#">Joins Exercises</a><ul>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/index.html#part-one-getting-started">Part One: Getting Started</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/index.html#part-two-sql-zoo">Part Two: SQL Zoo</a></li>
+<li><a class="reference internal" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/index.html#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+    </div>
+    <div id="page-content">
+        
+  <div class="section" id="joins-exercises">
+<h1>Joins Exercises</h1>
+<p><a class="reference external" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins.zip">Download exercise starter code</a></p>
+<div class="section" id="part-one-getting-started">
+<h2>Part One: Getting Started</h2>
+<p>Let’s start with the following sql file called <cite>data.sql</cite>.</p>
+<p>Download the starter code, and first, take a look at the SQL in that file and make sure you understand what it is doing. Once you have read that code, run the following in the unzipped folder:</p>
+<blockquote>
+<div><pre class="console literal-block">$ <span class="cmd">psql &lt; data.sql</span>
+$ <span class="cmd">psql joins_exercise</span>
+</pre>
+</div></blockquote>
+<p>Write the following SQL commands to produce the necessary output</p>
+<ul class="simple">
+<li>Join the two tables so that every column and record appears, regardless of if there is not an <cite>owner_id</cite>. Your output should look like this:</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">id | first_name | last_name | id |  make  |  model  | year |  price  | owner_id</span>
+<span class="cm">----+------------+-----------+----+--------+---------+------+---------+----------</span>
+<span class="cm">  1 | Bob        | Hope      |  1 | Toyota | Corolla | 2002 | 2999.99 |        1</span>
+<span class="cm">  1 | Bob        | Hope      |  2 | Honda  | Civic   | 2012 |   13000 |        1</span>
+<span class="cm">  2 | Jane       | Smith     |  3 | Nissan | Altima  | 2016 |   24000 |        2</span>
+<span class="cm">  2 | Jane       | Smith     |  4 | Subaru | Legacy  | 2006 | 5999.99 |        2</span>
+<span class="cm">  3 | Melody     | Jones     |  5 | Ford   | F150    | 2012 | 2599.99 |        3</span>
+<span class="cm">  3 | Melody     | Jones     |  6 | GMC    | Yukon   | 2016 |   13000 |        3</span>
+<span class="cm">  4 | Sarah      | Palmer    |  7 | GMC    | Yukon   | 2014 |   23000 |        4</span>
+<span class="cm">  4 | Sarah      | Palmer    |  8 | Toyota | Avalon  | 2009 |   13000 |        4</span>
+<span class="cm">  4 | Sarah      | Palmer    |  9 | Toyota | Camry   | 2013 |   13000 |        4</span>
+<span class="cm">  5 | Alex       | Miller    | 10 | Honda  | Civic   | 2001 | 7999.99 |        5</span>
+<span class="cm">  6 | Shana      | Smith     | 11 | Nissan | Altima  | 1999 | 1899.99 |        6</span>
+<span class="cm">  6 | Shana      | Smith     | 12 | Lexus  | ES350   | 1998 | 1599.99 |        6</span>
+<span class="cm">  6 | Shana      | Smith     | 13 | BMW    | 300     | 2012 |   23000 |        6</span>
+<span class="cm">  6 | Shana      | Smith     | 14 | BMW    | 700     | 2015 |   53000 |        6</span>
+<span class="cm">  7 | Maya       | Malarkin  |    |        |         |      |         |</span>
+<span class="cm">(15 rows)</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Count the number of cars for each owner. Display the owners <cite>first_name</cite>, <cite>last_name</cite> and <cite>count</cite> of vehicles. The first_name should be ordered in ascending order. Your output should look like this:</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">first_name | last_name | count</span>
+<span class="cm">------------+-----------+-------</span>
+<span class="cm">Alex       | Miller    |     1</span>
+<span class="cm">Bob        | Hope      |     2</span>
+<span class="cm">Jane       | Smith     |     2</span>
+<span class="cm">Melody     | Jones     |     2</span>
+<span class="cm">Sarah      | Palmer    |     3</span>
+<span class="cm">Shana      | Smith     |     4</span>
+<span class="cm">(6 rows)</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Count the number of cars for each owner and display the average price for each of the cars as integers. Display the owners <cite>first_name</cite>, <cite>last_name</cite>, average price and count of vehicles. The <cite>first_name</cite> should be ordered in descending order. Only display results with more than one vehicle and an average price greater than 10000. Your output should look like this:</li>
+</ul>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">first_name | last_name | average_price | count</span>
+<span class="cm">------------+-----------+---------------+-------</span>
+<span class="cm">Shana      | Smith     |         19875 |     4</span>
+<span class="cm">Sarah      | Palmer    |         16333 |     3</span>
+<span class="cm">Jane       | Smith     |         15000 |     2</span>
+<span class="cm">*/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="part-two-sql-zoo">
+<h2>Part Two: SQL Zoo</h2>
+<p>Complete the exercises in the Tutorials steps 6 and 7 in <a class="reference external" href="https://sqlzoo.net/">https://sqlzoo.net/</a></p>
+</div>
+<div class="section" id="solution">
+<h2>Solution</h2>
+<p><a class="reference external" href="https://curric.springboard.com/software-engineering-career-track/default/exercises/sql-joins/solution/index.html">View Our Solution</a></p>
+</div>
+</div>
+
+
+
+    </div>
+</div>
+<script type="text/javascript" src="./Joins Exercises_files/jquery.js.download"></script>
+<script type="text/javascript" src="./Joins Exercises_files/underscore.js.download"></script>
+<script type="text/javascript" src="./Joins Exercises_files/doctools.js.download"></script>
+<script type="text/javascript" src="./Joins Exercises_files/language_data.js.download"></script> 
+
+</body></html>
